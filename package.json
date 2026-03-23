@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "author": "Carlos Roberto da Silva Filho, João pedro keidann, Pedro Henrique Caldart Warmling, Abel Silva Neto, Davi Pereira Fagundes",
+  "license": "MIT",
+  "description": "Programa para fazer cálculos de potes de sorvetes.",
   "dependencies": {
     "jest": "^30.3.0",
     "readline-sync": "^1.4.10"
