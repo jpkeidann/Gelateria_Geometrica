@@ -35,8 +35,8 @@ export default class Receita {
 
     verificarQtdePotes() {
         // regra de negócio: apenas potes inteiros
-        this.totalPotesP = Math.floor(this.totalPotesP)
-        this.totalPotesM = Math.floor(this.totalPotesM)
-        this.totalPotesG = Math.floor(this.totalPotesG)
+        this.totalPotes = Math.floor(this.totalPotesP)
+        this.totalPotes = Math.floor(this.totalPotesM)
+        this.totalPotes = Math.floor(this.totalPotesG)
     }
 }
