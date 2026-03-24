@@ -2,13 +2,16 @@
   "name": "gelateria_geometrica",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "node index.js"
   },
   "author": "Carlos Roberto da Silva Filho, João pedro keidann, Pedro Henrique Caldart Warmling, Abel Silva Neto, Davi Pereira Fagundes",
   "license": "MIT",
   "description": "Programa para fazer cálculos de potes de sorvetes.",
   "dependencies": {
+    "@babel/preset-env": "^7.29.2",
     "jest": "^30.3.0",
     "readline-sync": "^1.4.10"
   }
