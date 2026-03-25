@@ -1,6 +1,6 @@
-// import Sorvete from "./models/sorvete.js"
-// import Receita from "./models/receita.js"
-// import Custo from "./models/custo.js"
+import Sorvete from "./models/sorvete.js"
+import Receita from "./models/receita.js"
+import Custo from "./models/custo.js"
 
 // 1. Mapeando apenas os botões e áreas gerais
 const botaoCalcular = document.getElementById('btn-calcular')
@@ -12,7 +12,6 @@ const tamanho12T = document.getElementById('12t')
 
 let tonelagem = 1
 
-// Evento para fazer o select mudar o valor do input automaticamente
 tamanho1T.addEventListener('click', (event) => {
     tonelagem = 1 
 })
