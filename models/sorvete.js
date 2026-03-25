@@ -1,6 +1,6 @@
 export default class Sorvete {
     constructor(raio, altura) {
-        this.raio = this.raio
+        this.raio = raio
         this.altura = altura
         this.densidade = 0.6 // densidade do sorvete em g/cm³ 
     }
