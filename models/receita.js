@@ -12,7 +12,7 @@ export default class Receita {
         this.totalPotes = 0
     }
 
-    calcularQtdeIngredientes(toneladas = 1) {
+    calcularQtdeIngredientes(toneladas) {
         const fator = (toneladas * 1000000) / this.pesoBase
 
         this.receita = {
