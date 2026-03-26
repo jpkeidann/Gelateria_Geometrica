@@ -25,16 +25,25 @@ export default class Receita {
         return this.receita
     }
 
-    calcularQtdePotes(toneladas) {
-        this.totalPotesP = (toneladas * 1000000) / 400
-        this.totalPotesM= (toneladas * 1000000) / 900
-        this.totalPotesG= (toneladas * 1000000) / 1700
-        this.verificarQtdePotes()
-        return this.totalPotes
+    calcularQtdePotesP(toneladas) {
+        this.totalPotesP = Math.floor((toneladas * 1000000) / 400)
+        return this.totalPotesP
+    }
+    
+    calcularQtdePotesM(toneladas) {
+        this.totalPotesM= Math.floor((toneladas * 1000000) / 900)
+        return this.totalPotesM
+    }
+    
+    calcularQtdePotesG(toneladas) {
+        this.totalPotesG= Math.floor((toneladas * 1000000) / 1700)
+        return this.totalPotesG
     }
 
-    verificarQtdePotes() {
-        // regra de negócio: apenas potes inteiros
-        this.totalPotes = Math.floor(this.totalPotesP), Math.floor(this.totalPotesM), Math.floor(this.totalPotesG)
+    calcularQtdePotesT(){
+        this.totalPotes = this.totalPotesG + this.totalPotesM + this.totalPotesP
+        return this.totalPotes
     }
+    
+
 }
