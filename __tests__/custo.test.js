@@ -7,7 +7,7 @@ describe('Testes da Classe Custo (Sorvete de Doce de Leite)', () => {
 
         expect(custo.leite).toBe(3.50)
         expect(custo.acucar).toBe(4.89)
-        expect(custo.doceDeLeite).toBe(18.00)
+        expect(custo.doceLeite).toBe(18.00) // ✅ corrigido
         expect(custo.creme).toBe(12.00)
     })
 
@@ -15,17 +15,13 @@ describe('Testes da Classe Custo (Sorvete de Doce de Leite)', () => {
         const custo = new Custo()
 
         const ingredientesMock = {
-            leite: 100000,        // 100 kg
-            acucar: 2000,         // 2 kg
-            doceDeLeite: 5000,    // 5 kg
-            creme: 1000           // 1 kg
+            leite: 100000,
+            acucar: 2000,
+            doceLeite: 5000, // ✅ corrigido
+            creme: 1000
         }
 
         const total = custo.calcularCusto(ingredientesMock)
-
-        // cálculo esperado:
-        // (100 * 3.5) + (2 * 4.89) + (5 * 18) + (1 * 12)
-        // 350 + 9.78 + 90 + 12 = 461.78
 
         expect(total).toBe(461.78)
     })
@@ -36,13 +32,13 @@ describe('Testes da Classe Custo (Sorvete de Doce de Leite)', () => {
         const ingredientesMock = {
             leite: 100000,
             acucar: 0,
-            doceDeLeite: 0,
+            doceLeite: 0, // ✅ corrigido
             creme: 0
         }
 
         custo.calcularCusto(ingredientesMock)
 
-        expect(custo.totalCusto).toBe(350) // 100kg * 3.5
+        expect(custo.totalCusto).toBe(350)
     })
 
     test('Deve calcular o custo por pote corretamente', () => {
@@ -60,15 +56,14 @@ describe('Testes da Classe Custo (Sorvete de Doce de Leite)', () => {
         const custo = new Custo()
 
         const ingredientesMock = {
-            leite: 12345,       // 12.345 kg
+            leite: 12345,
             acucar: 0,
-            doceDeLeite: 0,
+            doceLeite: 0, // ✅ corrigido
             creme: 0
         }
 
         const total = custo.calcularCusto(ingredientesMock)
 
-        // 12.345 * 3.5 = 43.2075 → 43.21
         expect(total).toBe(43.21)
     })
 
@@ -76,15 +71,13 @@ describe('Testes da Classe Custo (Sorvete de Doce de Leite)', () => {
         const custo = new Custo(10, 5, 20, 15)
 
         const ingredientesMock = {
-            leite: 100000,     // 100 kg
-            acucar: 1000,      // 1 kg
-            doceDeLeite: 1000, // 1 kg
-            creme: 1000        // 1 kg
+            leite: 100000,
+            acucar: 1000,
+            doceLeite: 1000, // ✅ corrigido
+            creme: 1000
         }
 
         const total = custo.calcularCusto(ingredientesMock)
-
-        // 100*10 + 1*5 + 1*20 + 1*15 = 1000 + 5 + 20 + 15 = 1040
 
         expect(total).toBe(1040)
     })

@@ -13,24 +13,36 @@ describe('Classe Receita', () => {
         expect(resultado.doceLeite).toBeCloseTo(55555.56)
     })
 
-    test('deve calcular corretamente os potes', () => {
+    test('deve calcular corretamente os potes pequenos', () => {
         const receita = new Receita()
 
-        const potes = receita.calcularQtdePotes(1)
+        const potes = receita.calcularQtdePotes(400, 1)
 
-        expect(potes.pequeno).toBe(Math.floor(1000000 / 400))
-        expect(potes.medio).toBe(Math.floor(1000000 / 900))
-        expect(potes.grande).toBe(Math.floor(1000000 / 1700))
+        expect(potes).toBe(Math.floor(1000000 / 400))
+    })
+
+    test('deve calcular corretamente os potes médios', () => {
+        const receita = new Receita()
+
+        const potes = receita.calcularQtdePotes(900, 1)
+
+        expect(potes).toBe(Math.floor(1000000 / 900))
+    })
+
+    test('deve calcular corretamente os potes grandes', () => {
+        const receita = new Receita()
+
+        const potes = receita.calcularQtdePotes(1700, 1)
+
+        expect(potes).toBe(Math.floor(1000000 / 1700))
     })
 
     test('não deve retornar potes fracionados', () => {
         const receita = new Receita()
 
-        const potes = receita.calcularQtdePotes(0.5)
+        const potes = receita.calcularQtdePotes(400, 0.5)
 
-        expect(Number.isInteger(potes.pequeno)).toBe(true)
-        expect(Number.isInteger(potes.medio)).toBe(true)
-        expect(Number.isInteger(potes.grande)).toBe(true)
+        expect(Number.isInteger(potes)).toBe(true)
     })
 
 })
