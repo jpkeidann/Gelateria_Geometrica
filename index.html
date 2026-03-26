@@ -1,12 +1,55 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=390, height=844, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Gelateria Geométrica</title>
 </head>
 <body>
-    
+
+<div class="container">
+
+  <div class="logo"><img src="" alt=""></div>
+
+  <h1>Gelateria<br>Geometrica</h1>
+  <p class="sub">sabor doce de leite</p>
+
+  <div class="meta-box">
+    <p>meta de produção<br>selecione um</p>
+  </div>
+
+
+  <div class="buttons">
+    <button id="1t">1 tonelada</button>
+    <button id="5t">5 toneladas</button>
+    <button id="12t">12 toneladas</button>
+  </div>
+
+  
+  <div class="inputs"><input type="number", placeholder="digite o valor do raio aqui", id="raio"></div>
+  <div class="inputs"><input type="number", placeholder="digite o valor da altura aqui", id="altura"></div>
+  
+  <button class="but" id="calcular">calcular</button>
+  <button class="but" id="btn_limpar">resetar</button> <br>
+  
+  <div class="res1"></div>
+  <div class="res2"></div>
+
+<script>
+    const buttons = document.querySelectorAll(".buttons button");
+  
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+  
+        // remove o verde de todos
+        buttons.forEach(b => b.classList.remove("active"));
+  
+        // adiciona no clicado
+        btn.classList.add("active");
+      });
+    });
+  </script>
+
 </body>
 </html>
