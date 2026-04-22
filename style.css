@@ -53,14 +53,11 @@ body {
   }
   
   /* Botões */
-  .buttons {
-    position: absolute;
-    right: 20px;
-    top: 200px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
+ .buttons {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
   
   .buttons button {
     border-radius: 10px;
@@ -73,7 +70,7 @@ body {
   /* Botão calcular */
   .but {
     margin-top: 10px;
-    padding: 10px 20px;
+  
     border-radius: 20px;
     border: 3px solid black;
     background: #ccc;
@@ -164,4 +161,12 @@ body {
     background-color: white;
     border-radius: 10px;
     text-align: center;
+  }
+
+  .select-tamanho {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    box-sizing: border-box;
   }
