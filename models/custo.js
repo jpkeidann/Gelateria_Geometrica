@@ -13,24 +13,29 @@ export default class Custo {
 
 
     calcularCusto(ingredientes) {
-        const total =
-            (ingredientes.leite / 1000) * this.leite +
-            (ingredientes.acucar / 1000) * this.acucar +
-            (ingredientes.doceLeite / 1000) * this.doceLeite +
-            (ingredientes.creme / 1000) * this.creme
+        this.preco = {
+            leite: (ingredientes.leite / 1000) * this.leite ,
+            acucar:(ingredientes.acucar / 1000) * this.acucar ,
+            doceLeite:(ingredientes.doceLeite / 1000) * this.doceLeite ,
+            creme:(ingredientes.creme / 1000) * this.creme
+        }
 
+        this.somarTotalCusto()
 
-        this.totalCusto = Number(total.toFixed(2))
-
-
-        return this.totalCusto
+        return this.preco
     }
-
 
     custoPorPote(totalCusto, qtdPotes ) {
         return Number((totalCusto / qtdPotes).toFixed(2))
     }
 
-
+    somarTotalCusto() {
+    const somaBruta = (this.preco.leite || 0) + 
+                      (this.preco.acucar || 0) + 
+                      (this.preco.doceLeite || 0) +  
+                      (this.preco.creme || 0);
+    
+    this.totalCusto = Number(somaBruta.toFixed(2));
+}
    
 }
