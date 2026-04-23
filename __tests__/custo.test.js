@@ -7,23 +7,25 @@ describe('Testes da Classe Custo (Sorvete de Doce de Leite)', () => {
 
         expect(custo.leite).toBe(3.50)
         expect(custo.acucar).toBe(4.89)
-        expect(custo.doceLeite).toBe(18.00) // ✅ corrigido
+        expect(custo.doceLeite).toBe(18.00)
         expect(custo.creme).toBe(12.00)
     })
 
-    test('Deve calcular o custo total corretamente (conversão g → kg)', () => {
+    test('Deve calcular o custo total corretamente (através da propriedade totalCusto)', () => {
         const custo = new Custo()
 
         const ingredientesMock = {
             leite: 100000,
             acucar: 2000,
-            doceLeite: 5000, // ✅ corrigido
+            doceLeite: 5000,
             creme: 1000
         }
 
-        const total = custo.calcularCusto(ingredientesMock)
+        // Chamamos a função (que retorna o objeto preco)
+        custo.calcularCusto(ingredientesMock)
 
-        expect(total).toBe(461.78)
+        // Verificamos o valor na propriedade totalCusto da instância
+        expect(custo.totalCusto).toBe(461.78)
     })
 
     test('Deve salvar o totalCusto corretamente', () => {
@@ -32,7 +34,7 @@ describe('Testes da Classe Custo (Sorvete de Doce de Leite)', () => {
         const ingredientesMock = {
             leite: 100000,
             acucar: 0,
-            doceLeite: 0, // ✅ corrigido
+            doceLeite: 0,
             creme: 0
         }
 
@@ -56,15 +58,16 @@ describe('Testes da Classe Custo (Sorvete de Doce de Leite)', () => {
         const custo = new Custo()
 
         const ingredientesMock = {
-            leite: 12345,
+            leite: 12345, // 12.345 * 3.50 = 43.2075
             acucar: 0,
-            doceLeite: 0, // ✅ corrigido
+            doceLeite: 0,
             creme: 0
         }
 
-        const total = custo.calcularCusto(ingredientesMock)
+        custo.calcularCusto(ingredientesMock)
 
-        expect(total).toBe(43.21)
+        // O arredondamento acontece dentro do somarTotalCusto()
+        expect(custo.totalCusto).toBe(43.21)
     })
 
     test('Deve permitir preços dinâmicos (simulando inflação)', () => {
@@ -73,13 +76,13 @@ describe('Testes da Classe Custo (Sorvete de Doce de Leite)', () => {
         const ingredientesMock = {
             leite: 100000,
             acucar: 1000,
-            doceLeite: 1000, // ✅ corrigido
+            doceLeite: 1000,
             creme: 1000
         }
 
-        const total = custo.calcularCusto(ingredientesMock)
+        custo.calcularCusto(ingredientesMock)
 
-        expect(total).toBe(1040)
+        expect(custo.totalCusto).toBe(1040)
     })
 
 })
