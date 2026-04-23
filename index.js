@@ -6,72 +6,93 @@ import Custo from "./models/custo.js"
 const botaoCalcular = document.getElementById('calcular')
 const botaoLimpar = document.getElementById('btn_limpar')
 const areaResultado = document.getElementById('res1')
-const tamanho1T = document.getElementById('1t')
-const tamanho5T = document.getElementById('5t')
-const tamanho12T = document.getElementById('12t')
+const ton1T = document.getElementById('1t')
+const ton5T = document.getElementById('5t')
+const ton12T = document.getElementById('12t')
 
 let tonelagem = 1
 
-tamanho1T.addEventListener('click', (event) => {
-    tonelagem = 1 
+ton1T.addEventListener('click', (event) => {
+    tonelagem = 1
 })
-
-tamanho5T.addEventListener('click', (event) => {
+ton5T.addEventListener('click', (event) => {
     tonelagem = 5
 })
-
-tamanho12T.addEventListener('click', (event) => {
+ton12T.addEventListener('click', (event) => {
     tonelagem = 12
 })
 
 botaoCalcular.addEventListener('click', () => {
+    const selectTamanho = document.getElementById('tamanho');
+    const valorTamanho = selectTamanho.value; 
+
     const raio = Number(document.getElementById('raio').value)
     const altura = Number(document.getElementById('altura').value)
-
-    const sorvete = new Sorvete(raio, altura)
-
-    const pesoUnitario = Number(document.getElementById('tamanho').value)
+    let pesoUnitario = 0
     
+    if (valorTamanho === "custom"){
+        const sorvete = new Sorvete(raio, altura)
+        pesoUnitario = sorvete.getPesoUnitario()
+    } else {
+        pesoUnitario = Number(valorTamanho)
+    }
+
+    const BotAtivo = document.getElementsByClassName('active')
+
+    console.log(BotAtivo)
+    
+    console.log(pesoUnitario)
     const receita = new Receita()
-    const ingredientes = receita.calcularQtdeIngredientes()
+    const ingredientes = receita.calcularQtdeIngredientes(tonelagem)
     const qtdPotes = receita.calcularQtdePotes(pesoUnitario,tonelagem)
 
     const custo = new Custo()
-    const precosTotal= custo.calcularCusto(ingredientes)
+    const precosIngredientes = custo.calcularCusto(ingredientes)
 
-    // Injetando o relatório montado dentro da área de resposta
     areaResultado.innerHTML = `
-        <h3>Relatório: 1 Tonelada de Massa</h3>
-        <p><strong>Custo total de produção:</strong> R$ ${precosTotal}</p>
-        <p><strong>Custo por pote de sorvete:</strong> R$ ${custo.custoPorPote(precosTotal, qtdPotes ) }</p>
+        <h3>Relatório: ${tonelagem} Tonelada(s) de Massa</h3>
+        <p><strong>Custo total de produção:</strong> R$ ${custo.totalCusto}</p>
+        <p><strong>Custo por pote de sorvete:</strong> R$ ${(custo.totalCusto / qtdPotes).toFixed(2)}</p>
         
         <br>
         <h4>Tabela de Quantidades e Custos</h4>
         <table>
             <thead>
                 <tr>
-                    <th>Ingrediente</th>
+                    <th>Item</th>
                     <th>Quantidade</th>
+                    <th>Custo Estimado</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>Qtde. Potes/td>
-                    <td>${receita.calcularQtdePotes()}</td>
+                    <td>Leite</td>
+                    <td>${(ingredientes.leite / 1000).toFixed(2)} kg</td>
+                    <td>R$ ${precosIngredientes.leite.toFixed(2)}</td>
+                </tr>
+                <tr>
+                    <td>Acucar</td>
+                    <td>${(ingredientes.acucar / 1000).toFixed(2)} kg</td>
+                    <td>R$ ${precosIngredientes.acucar.toFixed(2)}</td>
+                </tr>
+                <tr>
+                    <td>DoceLeite</td>
+                    <td>${(ingredientes.doceLeite / 1000).toFixed(2)} kg</td>
+                    <td>R$ ${precosIngredientes.doceLeite.toFixed(2)}</td>
+                </tr>
+                <tr>
+                    <td>Creme</td>
+                    <td>${(ingredientes.creme / 1000).toFixed(2)} kg</td>
+                    <td>R$ ${precosIngredientes.creme.toFixed(2)}</td>
                 </tr>
             </tbody>
         </table>
     `
 })
 
-// 3. Criando o evento para o botão "Limpar"
 botaoLimpar.addEventListener('click', () => {
-    // // Volta os campos para o valor padrão da receita original
-    // document.getElementById('tamanho').value = "35"
-    // document.getElementById('diametro').value = 35
-    // document.getElementById('espessura').value = 0.5
 
     // Limpa a tela de resultado
     areaResultado.innerHTML = "<p>Insira os dados da produção do sorvete e " +
-        "clique em 'Calcular Produção' para ver o custo, e quantidade de potes por produção.</p>"
+        "clique em 'Calcular' para ver o custo, e quantidade de potes por produção.</p>"
 })
