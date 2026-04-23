@@ -52,6 +52,7 @@ botaoCalcular.addEventListener('click', () => {
     areaResultado.innerHTML = `
         <h3>Relatório: ${tonelagem} Tonelada(s) de Massa</h3>
         <p><strong>Custo total de produção:</strong> R$ ${custo.totalCusto}</p>
+        <p><strong>Quantidade de Potes:</strong>${qtdPotes}</p>
         <p><strong>Custo por pote de sorvete:</strong> R$ ${(custo.totalCusto / qtdPotes).toFixed(2)}</p>
         
         <br>
