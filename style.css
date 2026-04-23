@@ -6,7 +6,6 @@ body {
   
   .container {
     width: 390px;
-    height: 844px;
     background: #555;
     margin: auto;
     padding: 20px;
@@ -53,11 +52,14 @@ body {
   }
   
   /* Botões */
- .buttons {
-  display: flex;
-  gap: 10px;
-  width: 100%;
-}
+  .buttons {
+    position: absolute;
+    right: 20px;
+    top: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
   
   .buttons button {
     border-radius: 10px;
@@ -70,7 +72,7 @@ body {
   /* Botão calcular */
   .but {
     margin-top: 10px;
-  
+    padding: 10px 20px;
     border-radius: 20px;
     border: 3px solid black;
     background: #ccc;
@@ -163,10 +165,26 @@ body {
     text-align: center;
   }
 
-  .select-tamanho {
-    display: block;
+  table {
     width: 100%;
-    margin-top: 10px;
-    padding: 10px;
-    box-sizing: border-box;
-  }
+    border-collapse: collapse;
+    margin-top: 8px;
+    background-color: white;
+}
+
+th, td {
+    border: 1px solid #6d706c;
+    padding: 8px;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+th {
+    background-color: #676867;
+    color: white;
+}
+
+td {
+    color: #565855;
+    font-weight: bold;
+}
